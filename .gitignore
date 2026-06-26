@@ -1,0 +1,31 @@
+# Dependencies
+node_modules
+.yarn
+bun.lockb
+
+# Build output
+dist
+.output
+.vinxi
+
+# TanStack Router generated
+src/routeTree.gen.ts
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
