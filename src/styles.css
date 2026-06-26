@@ -1,0 +1,125 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Anton", "Archivo Black", system-ui, sans-serif;
+  --font-serif: "Fraunces", "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-body: "Inter Tight", system-ui, sans-serif;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-hazard: var(--hazard);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-blood: var(--blood);
+}
+
+:root {
+  --radius: 0px;
+  --paper: oklch(0.96 0.015 90);
+  --ink: oklch(0.14 0 0);
+  --hazard: oklch(0.88 0.20 95);
+  --blood: oklch(0.55 0.22 25);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(0.99 0.005 90);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: oklch(0.92 0.01 90);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.90 0.01 90);
+  --muted-foreground: oklch(0.40 0.01 90);
+  --accent: var(--hazard);
+  --accent-foreground: var(--ink);
+  --destructive: var(--blood);
+  --destructive-foreground: var(--paper);
+  --border: var(--ink);
+  --input: oklch(0.92 0.01 90);
+  --ring: var(--ink);
+}
+
+.dark { color-scheme: light; }
+
+@layer base {
+  * { border-color: var(--ink); }
+  html { color-scheme: light; }
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    background-image:
+      radial-gradient(var(--ink) 0.6px, transparent 0.6px);
+    background-size: 6px 6px;
+    background-position: 0 0;
+    background-attachment: fixed;
+  }
+  ::selection { background: var(--hazard); color: var(--ink); }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; line-height: 0.85; text-transform: uppercase; }
+  h4 { font-family: var(--font-serif); }
+}
+
+@utility paper-card {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 0 var(--ink);
+}
+@utility hazard-card {
+  background: var(--hazard);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 0 var(--ink);
+}
+@utility ink-card {
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 0 var(--hazard);
+}
+@utility hazard-tape {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--hazard) 0 24px,
+    var(--ink) 24px 48px
+  );
+}
+@utility halftone {
+  background-image: radial-gradient(var(--ink) 1.2px, transparent 1.2px);
+  background-size: 8px 8px;
+}
+
+@keyframes marquee-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+
+@utility animate-marquee-x { animation: marquee-x 40s linear infinite; }
+@utility animate-blink { animation: blink 1s steps(1) infinite; }
+@utility animate-nudge { animation: nudge 1.4s ease-in-out infinite; }
