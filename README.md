@@ -82,6 +82,43 @@ portfolio-template/
 ```
 
 ---
+## Flow Chart
+```mermaid
+flowchart LR
+    %% Styling Definitions
+    classDef root fill:#2c3e50,stroke:#34495e,stroke-width:2px,color:#fff;
+    classDef dir fill:#34495e,stroke:#2c3e50,stroke-width:1px,color:#ecf0f1;
+    classDef file fill:#ecf0f1,stroke:#bdc3c7,stroke-width:1px,color:#2c3e50;
+    classDef config fill:#f1c40f,stroke:#f39c12,stroke-width:2px,color:#000;
+
+    Root[portfolio-template]:::root
+    
+    %% Tree Structure
+    Root --> Src[src]:::dir
+    Root --> Public[public]:::dir
+    Root --> ConfigJSON[components.json]:::config
+    Root --> ViteConfig[vite.config.ts]:::config
+    Root --> TSConfig[tsconfig.json]:::config
+    Root --> Prettier[.prettierrc]:::config
+    Root --> Eslint[eslint.config.js]:::config
+    Root --> Pkg[package.json]:::config
+
+    %% SRC Tree
+    Src --> Routes[routes]:::dir
+    Src --> Components[components]:::dir
+    Src --> Styles[styles]:::dir
+    Src --> Client[client.tsx]:::file
+    Src --> Server[server.tsx]:::file
+
+    %% Routes/Components
+    Routes --> RootRoute[__root.tsx]:::file
+    Routes --> IndexRoute[index.tsx]:::file
+    Components --> UI[ui/]:::dir
+    Styles --> AppCSS[app.css]:::file
+
+    %% Layout styling
+    linkStyle default stroke:#7f8c8d,stroke-width:1px;
+```
 
 ## 🎨 Customization
 
